@@ -1,0 +1,8 @@
+streamlit
+google-cloud-aiplatform
+python-dotenv
+pydantic
+sqlalchemy>=2.0
+pandas
+plotly
+streamlit-autorefresh
