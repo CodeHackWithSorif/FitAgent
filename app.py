@@ -4,16 +4,23 @@ from streamlit.components.v1 import html
 from dotenv import load_dotenv
 import os
 import sys
-import json
 from datetime import datetime
 
-# --- GOOGLE CLOUD AUTHENTICATION FIX FOR STREAMLIT ---
-# Streamlit Secrets 
-if "GCP_SERVICE_ACCOUNT" in st.secrets:
-    with open("gcp_credentials.json", "w") as f:
-        json.dump(dict(st.secrets["GCP_SERVICE_ACCOUNT"]), f)
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "gcp_credentials.json"
+# --- BULLETPROOF GOOGLE CLOUD AUTHENTICATION ---
+from google.oauth2 import service_account
+import vertexai
 
+if "GCP_SERVICE_ACCOUNT" in st.secrets:
+    creds_dict = dict(st.secrets["GCP_SERVICE_ACCOUNT"])
+    
+
+    if "private_key" in creds_dict:
+        creds_dict["private_key"] = creds_dict["private_key"].replace("\\n", "\n")
+    
+    credentials = service_account.Credentials.from_service_account_info(creds_dict)
+    
+    vertexai.init(project=creds_dict.get("project_id", "fine-rite-497404-r7"), credentials=credentials)
+# -----------------------------------------------
 
 # Add src to path for imports
 sys.path.insert(0, 'src')
