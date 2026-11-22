@@ -1,5 +1,7 @@
 # FitAgent - Autonomous AI Health Co-Pilot
 *Bridging the gap between health knowledge and actionable habits.*
+<img width="128" height="128" alt="image" src="https://github.com/user-attachments/assets/ca5adfce-3af0-474d-8ef7-339483647e0e" />
+[Live App](https://whatsapp.com/channel/0029VbBJa7iIt5rtVuNzfP2g)
 
 ## 🏆 Hackathon Context
 This project was built for the **INDIA RUNS Hackathon (Track 3: Everyday AI)** and **Gen AI Academy Cohort 2**.
